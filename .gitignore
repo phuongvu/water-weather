@@ -1,0 +1,12 @@
+node_modules/
+.idea
+.idea/workspace.xml
+.idea/misc.xml
+.DS_Store
+*.iml
+.idea
+node_modules
+npm-debug.log
+public/vendor
+public/stylesheets/style.css
+build

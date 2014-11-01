@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title head-title>Water Weather!</title>
+    <meta name="description" head-content="DESCRIPTION">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="revision" content="<!-- @echo revision -->">
+    <!-- bower:css -->
+    <!-- endbower -->
+  </head>
+  <body>
+    <!-- bower:js -->
+    <script src="vendor/react/react.js"></script>
+    <script src="vendor/processing/processing.js"></script>
+    <!-- endbower -->
+		<script src="vendor/socket.io-client/socket.io.js"></script>
+		<script>
+  		var socket = io('http://localhost');
+  		socket.on('temperature', function (data) {
+    		console.log(data);
+  		});
+			socket.on('photon', function(data) {
+				console.log(data);
+			});
+		</script>	
+  </body>
+</html>
+
+

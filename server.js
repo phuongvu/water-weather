@@ -3,9 +3,12 @@ var express = require( 'express' ),
     http    = require( 'http' ),
     morgan  = require( 'morgan' ),
 		arduino = require( './lib/arduino.js' );
-    debug   = require( 'debug' )( 'water:server' );
+    debug   = require( 'debug' )( 'water:server' ),
+    bodyParser = require('body-parser');
 
 var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 var server = http.createServer(app);
 var io = require( 'socket.io' )(server);
 

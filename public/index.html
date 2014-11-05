@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title head-title>Water Weather!</title>
-    <meta name="description" head-content="DESCRIPTION">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="revision" content="<!-- @echo revision -->">
-    <!-- bower:css -->
-    <!-- endbower -->
+    <title>Water Weather!</title>
+    <link rel="stylesheet" src="css/main.css"/>
+    <script src="vendor/react/react-with-addons.js"></script>
+    <script src="vendor/react/JSXTransformer.js"></script>
+    <script src="vendor/socket.io-client/socket.io.js"></script>
   </head>
   <body>
-    <!-- bower:js -->
-    <script src="vendor/react/react.js"></script>
-    <script src="vendor/processing/processing.js"></script>
-    <!-- endbower -->
-		<script src="vendor/socket.io-client/socket.io.js"></script>
-		<script>
-  		var socket = io('http://localhost');
-  		socket.on('temperature', function (data) {
-    		console.log(data);
-  		});
-			socket.on('photon', function(data) {
-				console.log(data);
-			});
-		</script>	
+    <div id="content"></div>
+    <script type="text/jsx" src="scripts/component.js"></script>
   </body>
 </html>
 

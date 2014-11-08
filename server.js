@@ -33,5 +33,4 @@ arduino.board().then(function() {
 				io.emit( 'photon', { photon: arduino.photon().value } );
 		} );
 } );
-
 	

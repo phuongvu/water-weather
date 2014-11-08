@@ -1,0 +1,141 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+#content .day, #content .night {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.day, .night, .sun, .moon, .stars, .wind, .snow, .snowflake, .cloud {
+    transition: all 2s linear;
+}
+
+.day {
+    color: #000;
+    background-color: #FFF;
+}
+
+.night {
+    color: #FFF;
+    background-color: #000;
+}
+
+.snow {
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    width: 400px;
+    height: 400px;
+    background-image: url('../assets/snow.svg');
+    z-index: 1000;
+}
+
+.snowflake {
+    position: absolute;
+    top: 60%;
+    left: 77%;
+    width: 300px;
+    height: 300px;
+    background-image: url('../assets/snow-flake.svg');
+    z-index: 1000;
+}
+
+.cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 400px;
+    background-image: url('../assets/cloud.svg');
+    z-index: 1000;
+}
+
+.sun {
+    position: absolute;
+    top: 33%;
+    left: 41%;
+    width: 271px;
+    height: 269px;
+    background-image: url('../assets/sun.svg');
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+
+.moon {
+    position: absolute;
+    top: 33%;
+    left: 60%;
+    width: 220px;
+    height: 220px;
+    background-image: url('../assets/moon.svg');
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+
+.wind {
+    position: absolute;
+    top: 49%;
+    left: 44%;
+    width: 400px;
+    height: 400px;
+    background-image: url('../assets/wind.svg');
+    z-index: 10000;
+}
+
+.stars {
+    position: relative;
+    width: 1440px;
+    height: 740px;
+    background-image: url('../assets/stars.svg');
+    z-index: 1000;
+}
+
+.weather__temp-panel {
+    width: 200px;
+    height: 200px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    z-index: 10000;
+}
+
+.sun--blew {
+    left: -50%;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.white-border {
+    border-color: #FFF;
+    background-color: #FFF;
+}
+
+.black-border {
+    border-color: #000;
+    background-color: #000;
+}
+
+.weather__temp-panel__number {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.black-color {
+    color: #000;
+}

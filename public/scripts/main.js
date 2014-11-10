@@ -8,20 +8,27 @@ var Night = React.createClass({
   render: function () {
     var cx = React.addons.classSet;
     var day = this.props.day;
+    var temp = this.props.temp;
 
     var moonClasses = cx({
-      'moon hide' : day,
-      'moon show' : !day
+      'moon'     : day,
+      'moon show': !day
     });
     var starsClasses = cx({
-      'stars hide' : day,
-      'stars show' : !day
+      'stars'     : day,
+      'stars show': !day
+    });
+    var snowClasses = cx({
+      'canvas': !day && temp > 15,
+      'canvas show': !day && temp <= 15
     });
 
     return (
       <div>
         <div className = {moonClasses}></div>
         <div className = {starsClasses}></div>
+        <canvas id = 'canvas' className = {snowClasses}></canvas>
+        <script>snowfall();</script>
       </div>
     );
   }
@@ -34,32 +41,33 @@ var Day = React.createClass({
     var temp = this.props.temp;
 
     var sunClasses = cx({
-      'sun show'  : day && temp >= 25,
-      'sun hide': !day || temp < 25
+      'sun show': day && temp >= 25,
+      'sun'     : !day || day && temp < 25
     });
     var windClasses = cx({
-      'wind show'  : day && temp > 15 && temp < 25,
-      'wind hide'  : !day && temp >= 25
-    });
-    var snowClasses = cx({
-      'snow show'  : day && temp <= 15,
-      'snow hide'  : !day && temp > 15
+      'wind show': day && temp > 20 && temp < 25,
+      'wind'     : !day || day && temp >= 25 || day && temp <= 20
     });
     var cloudClasses = cx({
-      'cloud show'  : day,
-      'cloud hide'  : !day
+      'cloud show': day && temp < 25 && temp > 20,
+      'cloud'     : !day || day && temp >= 25 || day && temp <= 20
+    });
+    var slushClasses = cx({
+      'slush show': day && temp > 15 && temp <= 20,
+      'slush'     : !day || day && temp > 20 || day && temp <= 15
     });
     var snowflakeClasses = cx({
-      'snowflake' : temp < 15
+      'snowflake show': day && temp <= 15,
+      'snowflake'     : !day || day && temp > 15
     });
 
     return (
-      <div>
-        <div className = {sunClasses}></div>
-        <div className = {windClasses}></div>
-        <div className = {snowClasses}></div>
-        <div className = {cloudClasses}></div>
-        <div className = {snowflakeClasses}></div>
+      <div className = 'symbols'>
+        <div key = 'sun' className = {sunClasses}></div>
+        <div key = 'wind' className = {windClasses}></div>
+        <div key = 'slush' className = {slushClasses}></div>
+        <div key = 'cloud' className = {cloudClasses}></div>
+        <div key = 'snowflake' className = {snowflakeClasses}></div>
       </div>
     );
   }
@@ -74,6 +82,9 @@ var Weather = React.createClass({
   componentDidMount: function () {
     var socket = io( this.props.url );
     var self = this;
+
+    snowfall();
+
     socket.on('temperature', function (data) {
       self.setProps( { temp: data.temp } );                                           
     });
@@ -98,7 +109,7 @@ var Weather = React.createClass({
     return (
       <div className = {panelClasses}>
         <Day temp = {temp} day = {day} />
-        <Night day = {day} />
+        <Night temp = {temp} day = {day} />
         <div className='weather__temp-panel centered'>
           <div className='weather__temp-panel__number centered'>{temp}&deg;C</div>
         </div>

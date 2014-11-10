@@ -3,13 +3,23 @@ body {
 	margin: 0;
 }
 
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    z-index: 100000;
+    opacity: 0;
+}
+
 #content .day, #content .night {
     height: 100vh;
     overflow: hidden;
 }
 
-.day, .night, .sun, .moon, .stars, .wind, .snow, .snowflake, .cloud {
-    transition: all 2s linear;
+.day, .night, .sun, .moon, .stars, .wind, .slush, .snowflake, .cloud, #canvas {
+    transition: all 1s linear;
 }
 
 .day {
@@ -22,24 +32,26 @@ body {
     background-color: #000;
 }
 
-.snow {
+.slush {
     position: absolute;
-    top: 8%;
-    left: 35%;
-    width: 400px;
-    height: 400px;
-    background-image: url('../assets/snow.svg');
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    background-image: url('../assets/slush.svg');
     z-index: 1000;
+    opacity: 0;
 }
 
 .snowflake {
     position: absolute;
-    top: 60%;
-    left: 77%;
-    width: 300px;
-    height: 300px;
+    top: 48%;
+    left: 35%;
+    width: 230px;
+    height: 230px;
     background-image: url('../assets/snow-flake.svg');
     z-index: 1000;
+    opacity: 0;
 }
 
 .cloud {
@@ -50,6 +62,7 @@ body {
     height: 400px;
     background-image: url('../assets/cloud.svg');
     z-index: 1000;
+    opacity: 0;
 }
 
 .sun {
@@ -61,6 +74,7 @@ body {
     background-image: url('../assets/sun.svg');
     z-index: 1000;
     transform: translate(-50%, -50%);
+    opacity: 0;
 }
 
 .moon {
@@ -72,16 +86,18 @@ body {
     background-image: url('../assets/moon.svg');
     z-index: 1000;
     transform: translate(-50%, -50%);
+    opacity: 0;
 }
 
 .wind {
     position: absolute;
-    top: 49%;
-    left: 44%;
+    top: 19%;
+    left: 40%;
     width: 400px;
     height: 400px;
     background-image: url('../assets/wind.svg');
     z-index: 10000;
+    opacity: 0;
 }
 
 .stars {
@@ -90,6 +106,8 @@ body {
     height: 740px;
     background-image: url('../assets/stars.svg');
     z-index: 1000;
+    margin: auto auto;
+    opacity: 0;
 }
 
 .weather__temp-panel {
@@ -99,28 +117,6 @@ body {
     border-style: solid;
     border-radius: 5px;
     z-index: 10000;
-}
-
-.sun--blew {
-    left: -50%;
-}
-
-.hide {
-    opacity: 0;
-}
-
-.show {
-    opacity: 1;
-}
-
-.white-border {
-    border-color: #FFF;
-    background-color: #FFF;
-}
-
-.black-border {
-    border-color: #000;
-    background-color: #000;
 }
 
 .weather__temp-panel__number {
@@ -138,4 +134,8 @@ body {
 
 .black-color {
     color: #000;
+}
+
+.show {
+    opacity: 1 !important;
 }

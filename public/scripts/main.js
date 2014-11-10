@@ -19,8 +19,8 @@ var Night = React.createClass({
       'stars show': !day
     });
     var snowClasses = cx({
-      'canvas': !day && temp > 15,
-      'canvas show': !day && temp <= 15
+      'canvas'     : !day && temp > 17,
+      'canvas show': !day && temp <= 17
     });
 
     return (
@@ -28,7 +28,6 @@ var Night = React.createClass({
         <div className = {moonClasses}></div>
         <div className = {starsClasses}></div>
         <canvas id = 'canvas' className = {snowClasses}></canvas>
-        <script>snowfall();</script>
       </div>
     );
   }
@@ -53,12 +52,16 @@ var Day = React.createClass({
       'cloud'     : !day || day && temp >= 25 || day && temp <= 20
     });
     var slushClasses = cx({
-      'slush show': day && temp > 15 && temp <= 20,
-      'slush'     : !day || day && temp > 20 || day && temp <= 15
+      'slush show': day && temp > 17 && temp <= 20,
+      'slush'     : !day || day && temp > 20 || day && temp <= 17
+    });
+    var rainClasses = cx({
+      'rain show': day && temp > 17 && temp <= 20,
+      'rain'     : !day || day && temp > 20 || day && temp <= 17
     });
     var snowflakeClasses = cx({
-      'snowflake show': day && temp <= 15,
-      'snowflake'     : !day || day && temp > 15
+      'snowflake show': day && temp <= 17,
+      'snowflake'     : !day || day && temp > 17
     });
 
     return (
@@ -66,6 +69,7 @@ var Day = React.createClass({
         <div key = 'sun' className = {sunClasses}></div>
         <div key = 'wind' className = {windClasses}></div>
         <div key = 'slush' className = {slushClasses}></div>
+        <div key = 'rain' className = {rainClasses}></div>
         <div key = 'cloud' className = {cloudClasses}></div>
         <div key = 'snowflake' className = {snowflakeClasses}></div>
       </div>
@@ -83,6 +87,9 @@ var Weather = React.createClass({
     var socket = io( this.props.url );
     var self = this;
 
+    //Make it rain
+    createRain();
+    //Make it snow
     snowfall();
 
     socket.on('temperature', function (data) {

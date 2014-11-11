@@ -40,16 +40,16 @@ var Day = React.createClass({
     var temp = this.props.temp;
 
     var sunClasses = cx({
-      'sun show': day && temp >= 25,
-      'sun'     : !day || day && temp < 25
+      'sun show': day && temp >= 22,
+      'sun'     : !day || day && temp < 22
     });
     var windClasses = cx({
-      'wind show': day && temp > 20 && temp < 25,
-      'wind'     : !day || day && temp >= 25 || day && temp <= 20
+      'wind show': day && temp > 20 && temp < 22,
+      'wind'     : !day || day && temp >= 22 || day && temp <= 20
     });
     var cloudClasses = cx({
-      'cloud show': day && temp < 25 && temp > 20,
-      'cloud'     : !day || day && temp >= 25 || day && temp <= 20
+      'cloud show': day && temp < 22 && temp > 20,
+      'cloud'     : !day || day && temp >= 22 || day && temp <= 20
     });
     var slushClasses = cx({
       'slush show': day && temp > 17 && temp <= 20,
@@ -102,7 +102,7 @@ var Weather = React.createClass({
   },
 
   evaluatePhoton: function (photon) {
-  	return (photon > 100);
+  	return (photon > 200);
   },
 
   render: function () {

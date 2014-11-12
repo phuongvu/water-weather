@@ -1,8 +1,8 @@
 var express = require( 'express' ),
-		path 		= require( 'path' ),
+	path 	= require( 'path' ),
     http    = require( 'http' ),
     morgan  = require( 'morgan' ),
-		arduino = require( './lib/arduino.js' );
+	arduino = require( './lib/arduino.js' ),
     debug   = require( 'debug' )( 'water:server' ),
     bodyParser = require('body-parser');
 

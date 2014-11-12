@@ -4,6 +4,9 @@ Water-Weather is an web application that does two things:
 - Send it over to the client via web socket
 
 ###Installation:
+	You need to upload StandardFirmata to Arduino
 	npm install
 	npm start
 	Go to http://localhost:9000
+
+	
